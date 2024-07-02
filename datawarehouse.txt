@@ -1,0 +1,93 @@
+Data Warehouse:
+	
+	Data warehouse is used to store large volume of data from multiple sources.
+	Raulph Kimbell & Bell Inmon are the fathers of Data warehouse
+	Data warehouse is built on top a database system to store data. Basically the relational database
+	Mostly work with structured data
+	SQL is the backbone of data warehouse
+	
+	Key charactersitics of a data warehouse:
+		1. Integration
+		2. Subject Oriented (data from multiple sources are organized )
+		3. Time Varient (Historic data)
+		4. Non Volatile (Up to date)
+		
+	Why Data warehouse:
+		1. Making data driven decisions - Past, Present, Future
+		2. One stop shop
+		3. BI + DW = Value
+		
+	Architecture:
+		1. Centralized data warehouse
+			Todays Chanllenges with centralized
+				Technology
+				Work Processes
+				Organizational & human factors
+				
+	ODS & Staging Layers:
+		Extract information from source before it is being transformed
+		Types:
+			1. Non Persistent (Data will be removed after processing)
+			2. Persistent	(Data will not be removed)
+			
+	ETL & ELT
+		Schema on read & Schema on write
+		
+		Extract 
+		
+			Types:
+				1. Initial Load
+				2. Incremental Load 
+					There will be mix & match with sources how data is loaded
+			
+			Incremental Load
+				1. Append
+				2. Inplace Update
+				3. Complete Replacement
+				4. Rolling Append
+			
+		Transformation:
+			The goal is data uniformity
+			
+			1. Data value unification ( example Professor in one table and P in another table)
+			2. Data type & size unification 
+			3. Data De-Duplication
+			4. Dropping Columns (removing unwanted columns) Vertical slicing
+			5. Value based row filtering () Horizontal slicing
+			6. correcting known errors
+			
+			
+	Data warehouse design engineering:
+		Dimension & Facts
+		Dimensions Tables & Fact Tables
+		Datawarehouse Schemas
+			1. Star schema
+			2. Snowflake schema
+		
+		Fact table is used to store the facts or measurements
+		
+			Different Forms of Additivity in Fact Tables
+				1. Fully additive fact tables (design to get the additive sum of dimensions) How many products sold, How Many Orders customer placed
+				2. Semi additive fact tables (getiing the average of the dimensions)
+				3. Non additive fact tables
+			
+			Fact Table Type:
+				1. Tractional Fact Table - Use to store transations
+				2. Periodic Snapshot Fact Table - Use to store some periodic metrics - Total sales by month wise
+				3. Accumulationg Snapshot Fact Table - example Measurement of changes over a period of time. For example, Application Process from Application Submittting, Initial Screening, Preliminary Decision, Final Decision, Payment
+				4. Factless Fact Table
+			
+		Dimension table used to store the context about  the facts 
+			
+			Types of dimensions
+				1. Role playing based dimensions (Primary column from dimensions table used in multiple columns of a fact table) example - Date Dimension
+				2. Conformed dimensions - Date Dimensions and other fixed dimension table
+				3. Junk dimensions - creating a dimension table in order to simplify the fact table for example course and location are mapped as two columns in fact table. Instead of it, creating a new dimension table course location and use that id in fact table
+				4. Degenerated dimensions - any column that does not give any values to fact table for example a string column in fact table
+				5. Slowly changing dimensions - changing slowly over time, rather than regularly
+						Type-0 SCD - Not allowing override
+						Type-1 SCD - Allowing override but no tracking of history
+						Type-2 SCD - Allowing override and also tracks history
+				6. Rapidly changing dimensions - updates takes place regularly - ex Transaction Tables
+				
+				
